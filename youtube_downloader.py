@@ -1,6 +1,10 @@
 from pytubefix import YouTube
 
-url = 'https://www.youtube.com/watch?v=3UOyky9sEQY&list=PL7yh-TELLS1FwBSNR_tH7qVbNpYHL4IQs'
+# Header Aplikasi
+print('\n')
+print('Youtube Downloader V.001')
+print('--Code by whiter0se---\n')
+url = input('Masukkan URL Youtube : ')
 
 try:
     yt = YouTube(url)
@@ -9,19 +13,20 @@ try:
     durasi = yt.length
     deskripsi = yt.description
 
-    # menampilkan informasi video
-    print("Judul : %s" %judul)
-    print("Jumlah Penonton : %s" %penonton)
-    print("Durasi : %s\n" %durasi)
+    # Tampilan Informasi Video
+    print('\n-- Informasi--')
+    print("Judul           : %s" %judul)
+    print("Jumlah Penonton : %s viewers" %penonton)
+    print("Durasi          : %s\n" %durasi)
 
-    #memilih stream terbaik untuk diunduh
+    #memilih stream untuk diunduh
     cek = yt.streams.filter(file_extension='mp4')
     for i in cek:
         print(i)
 
     # apakah akan mendownload video?
-    data = input("Apakah kamu akan mendownload video (Y/n)? ")
-    if data == 'Y' or 'y':
+    data = input("Apakah kamu akan mendownload video (y/n)? ").lower()
+    if data == 'y':
         tag = input("Masukkan itag : ")
         unduh = yt.streams.get_by_itag(tag)
         unduh.download()
