@@ -1,4 +1,5 @@
 from pytubefix import YouTube
+from function import time
 
 # Header Aplikasi
 print('\n')
@@ -11,13 +12,13 @@ try:
     judul = yt.title
     penonton = yt.views
     durasi = yt.length
-    deskripsi = yt.description
+    waktu = time.convert_durasi(durasi)
 
     # Tampilan Informasi Video
     print('\n-- Informasi--')
     print("Judul           : %s" %judul)
     print("Jumlah Penonton : %s viewers" %penonton)
-    print("Durasi          : %s\n" %durasi)
+    print(f"Durasi          : {waktu} jam\n")
 
     #memilih stream untuk diunduh
     cek = yt.streams.filter(file_extension='mp4')
